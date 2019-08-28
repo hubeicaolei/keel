@@ -1,0 +1,10 @@
+logging:
+  config: classpath:logback-spring.xml
+
+server:
+  port: 8110
+
+spring:
+  profiles:
+    active: dev
+

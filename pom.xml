@@ -2,6 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
+        <module>keel-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -19,6 +20,26 @@
     <name>${project.artifactId}</name>
     <!--建议结合实际情况调整工程描述-->
     <description>服务治理</description>
+
+    <properties>
+        <netty.version>4.0.34.Final</netty.version>
+        <lombok.version>1.16.20</lombok.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
 
