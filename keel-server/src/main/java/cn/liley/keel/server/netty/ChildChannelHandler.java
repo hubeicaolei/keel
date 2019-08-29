@@ -9,6 +9,7 @@ public class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
     @Autowired
     private KeelServerHandler keelServerHandler;
 
+    @Override
     public void initChannel(SocketChannel socketChannel) throws Exception {
         socketChannel.pipeline().addLast(keelServerHandler);
     }
