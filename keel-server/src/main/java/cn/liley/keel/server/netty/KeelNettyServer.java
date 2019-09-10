@@ -9,6 +9,8 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 import lombok.Data;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +37,7 @@ public class KeelNettyServer implements KeelServer {
             bootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, backlog)
+                    .handler(new LoggingHandler(LogLevel.DEBUG))
                     .childHandler(childChannelHandler);
             //绑定端口，同步等待成功
             ChannelFuture f = bootstrap.bind(port).sync();
