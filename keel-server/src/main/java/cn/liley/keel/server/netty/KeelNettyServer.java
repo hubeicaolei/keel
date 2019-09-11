@@ -25,7 +25,7 @@ public class KeelNettyServer implements KeelServer {
     private int backlog;
 
     @Autowired
-    private ChildChannelHandler childChannelHandler;
+    private KeelChannelHandler keelChannelHandler;
 
     @Override
     public void run() throws Exception {
@@ -38,7 +38,7 @@ public class KeelNettyServer implements KeelServer {
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, backlog)
                     .handler(new LoggingHandler(LogLevel.DEBUG))
-                    .childHandler(childChannelHandler);
+                    .childHandler(keelChannelHandler);
             //绑定端口，同步等待成功
             ChannelFuture f = bootstrap.bind(port).sync();
             //等待服务监听端口关闭
