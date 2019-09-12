@@ -1,14 +1,12 @@
-package cn.liley.keel.server.netty.codec;
+package cn.liley.keel.message.codec;
 
 import java.util.List;
 
 import org.msgpack.MessagePack;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
-import io.netty.util.concurrent.EventExecutorGroup;
 
 public class MsgpackDecoder extends MessageToMessageDecoder<ByteBuf> {
 

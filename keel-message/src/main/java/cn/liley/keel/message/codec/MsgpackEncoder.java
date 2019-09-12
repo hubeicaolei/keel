@@ -1,8 +1,8 @@
-package cn.liley.keel.server.netty.codec;
+package cn.liley.keel.message.codec;
 
 import org.msgpack.MessagePack;
 
-import cn.liley.keel.server.message.KeelMessage;
+import cn.liley.keel.message.KeelMessage;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;

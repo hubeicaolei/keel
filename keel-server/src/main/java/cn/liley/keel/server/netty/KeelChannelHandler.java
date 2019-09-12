@@ -1,9 +1,10 @@
 package cn.liley.keel.server.netty;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import cn.liley.keel.server.netty.codec.MsgpackDecoder;
-import cn.liley.keel.server.netty.codec.MsgpackEncoder;
+import cn.liley.keel.message.codec.MsgpackDecoder;
+import cn.liley.keel.message.codec.MsgpackEncoder;
 import cn.liley.keel.server.netty.handler.HeartbeatResponseHandler;
 import cn.liley.keel.server.netty.handler.LoginAuthResponseHandler;
 import io.netty.channel.ChannelInitializer;
@@ -12,6 +13,7 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 
+@Component
 public class KeelChannelHandler extends ChannelInitializer<SocketChannel> {
     @Autowired
     private KeelServerHandler keelServerHandler;

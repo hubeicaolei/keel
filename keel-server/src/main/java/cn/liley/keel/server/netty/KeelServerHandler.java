@@ -1,6 +1,7 @@
 package cn.liley.keel.server.netty;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler;
@@ -10,6 +11,7 @@ import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 
 @ChannelHandler.Sharable
+@Component
 public class KeelServerHandler extends ChannelHandlerAdapter {
 
     public void channelRead(ChannelHandlerContext ctx, Object msg) {

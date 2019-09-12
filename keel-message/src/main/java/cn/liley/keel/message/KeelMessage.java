@@ -1,4 +1,4 @@
-package cn.liley.keel.server.message;
+package cn.liley.keel.message;
 
 import java.io.Serializable;
 
