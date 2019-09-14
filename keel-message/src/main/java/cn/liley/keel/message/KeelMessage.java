@@ -1,6 +1,20 @@
 package cn.liley.keel.message;
 
-import java.io.Serializable;
+import lombok.Data;
 
-public class KeelMessage implements Serializable {
+@Data
+public class KeelMessage extends BaseMessage {
+
+    private String token;
+
+    public KeelMessage(MessageType type, String token) {
+        super(type);
+        setToken(token);
+    }
+
+    public KeelMessage() {
+        super();
+        setToken("");
+    }
+
 }
