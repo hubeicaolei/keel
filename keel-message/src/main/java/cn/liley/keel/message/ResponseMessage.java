@@ -1,10 +1,10 @@
 package cn.liley.keel.message;
 
-import java.io.Serializable;
-
 import lombok.Data;
+import lombok.ToString;
 
 @Data
+@ToString
 public class ResponseMessage extends KeelMessage {
 
     private long errCode;

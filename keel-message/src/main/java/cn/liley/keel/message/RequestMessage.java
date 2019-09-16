@@ -1,8 +1,8 @@
 package cn.liley.keel.message;
 
-import java.io.Serializable;
+import lombok.ToString;
 
-
+@ToString
 public class RequestMessage extends KeelMessage {
 
     public RequestMessage(MessageType type, String token) {

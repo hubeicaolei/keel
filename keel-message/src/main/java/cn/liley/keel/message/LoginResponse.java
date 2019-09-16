@@ -1,9 +1,19 @@
 package cn.liley.keel.message;
 
-public class LoginResponse extends KeelMessage {
+import org.msgpack.annotation.Message;
+
+import lombok.ToString;
+
+@ToString
+@Message
+public class LoginResponse extends ResponseMessage {
 
     public LoginResponse(String token) {
-        super(MessageType.LOGIN_RES);
+        super(MessageType.LOGIN_RES, token);
         setToken(token);
+    }
+
+    public LoginResponse() {
+        super();
     }
 }

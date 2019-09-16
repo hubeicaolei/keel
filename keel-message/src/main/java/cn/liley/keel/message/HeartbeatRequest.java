@@ -1,8 +1,14 @@
 package cn.liley.keel.message;
 
-public class HeartbeatRequest extends RequestMessage {
+import org.msgpack.annotation.Message;
 
-    public HeartbeatRequest(String token) {
-        super(MessageType.HEARTBEAT_REQ, token);
+import lombok.ToString;
+
+@ToString
+@Message
+public class HeartbeatRequest extends BaseMessage {
+
+    public HeartbeatRequest() {
+        super(MessageType.HEARTBEAT_REQ);
     }
 }

@@ -25,7 +25,7 @@ public class KeelChannelHandler extends ChannelInitializer<SocketChannel> {
                 .addLast(new MsgpackDecoder()) // 解码器
                 .addLast(new LengthFieldPrepender(2))
                 .addLast(new MsgpackEncoder()) // 编码器
-                .addLast(new ReadTimeoutHandler(10)) // 超时10s
+                .addLast(new ReadTimeoutHandler(50)) // 超时50s
                 .addLast(new LoginAuthResponseHandler()) // 登录
                 .addLast(new HeartbeatResponseHandler()); // 心跳
     }

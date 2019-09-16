@@ -7,6 +7,7 @@ import cn.liley.keel.client.netty.handler.LoginAuthRequestHandler;
 import cn.liley.keel.message.codec.MsgpackDecoder;
 import cn.liley.keel.message.codec.MsgpackEncoder;
 import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
@@ -40,21 +41,27 @@ public class KeelNettyClient implements KeelClient {
     }
 
     private void connect(String host, int port) throws Exception {
-        Bootstrap client = new Bootstrap();
-        client.group(group).channel(NioSocketChannel.class)
-                .option(ChannelOption.TCP_NODELAY, true)
-                .handler(new ChannelInitializer<SocketChannel>() {
-                    @Override
-                    protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline()
-                                .addLast(new LengthFieldBasedFrameDecoder(1024 * 64, 0, 2, 0, 2))
-                                .addLast(new MsgpackDecoder()) // 解码器
-                                .addLast(new LengthFieldPrepender(2))
-                                .addLast(new MsgpackEncoder()) // 编码器
-                                .addLast(new ReadTimeoutHandler(10)) // 超时10s
-                                .addLast(new LoginAuthRequestHandler()) // 登录
-                                .addLast(new HeartbeatRequestHandler()); // 心跳
-                    }
-                });
+        try {
+            Bootstrap client = new Bootstrap();
+            client.group(group).channel(NioSocketChannel.class)
+                    .option(ChannelOption.TCP_NODELAY, true)
+                    .handler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        protected void initChannel(SocketChannel ch) throws Exception {
+                            ch.pipeline()
+                                    .addLast(new LengthFieldBasedFrameDecoder(1024 * 64, 0, 2, 0, 2))
+                                    .addLast(new MsgpackDecoder()) // 解码器
+                                    .addLast(new LengthFieldPrepender(2))
+                                    .addLast(new MsgpackEncoder()) // 编码器
+//                                    .addLast(new ReadTimeoutHandler(50)) // 超时10s
+                                    .addLast(new LoginAuthRequestHandler()) // 登录
+                                    .addLast(new HeartbeatRequestHandler()); // 心跳
+                        }
+                    });
+            ChannelFuture future = client.connect(host, port).sync();
+            future.channel().closeFuture().sync();
+        } finally {
+
+        }
     }
 }

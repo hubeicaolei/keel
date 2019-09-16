@@ -40,7 +40,7 @@ public class KeelNettyServer implements KeelServer {
                     .handler(new LoggingHandler(LogLevel.DEBUG))
                     .childHandler(keelChannelHandler);
             //绑定端口，同步等待成功
-            ChannelFuture f = bootstrap.bind(port).sync();
+            ChannelFuture f = bootstrap.bind("127.0.0.1", port).sync();
             //等待服务监听端口关闭
             f.channel().closeFuture().sync();
         } finally {

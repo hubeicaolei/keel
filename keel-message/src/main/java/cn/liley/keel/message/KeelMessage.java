@@ -1,8 +1,10 @@
 package cn.liley.keel.message;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
+@ToString
 public class KeelMessage extends BaseMessage {
 
     private String token;

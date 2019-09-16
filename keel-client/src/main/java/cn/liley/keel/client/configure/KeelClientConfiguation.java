@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 import cn.liley.keel.client.KeelClient;
 import cn.liley.keel.client.netty.KeelNettyClient;
+import cn.liley.keel.client.netty.handler.HeartbeatRequestHandler;
 
 @Configuration
 @EnableConfigurationProperties(KeelProperties.class)
