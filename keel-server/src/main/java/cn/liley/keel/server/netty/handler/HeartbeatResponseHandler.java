@@ -15,7 +15,6 @@ public class HeartbeatResponseHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        log.info("receive a msg, {}", msg);
         if (msg instanceof BaseMessage) {
             BaseMessage keelMessage = (BaseMessage) msg;
             if (keelMessage.getType() == MessageType.HEARTBEAT_REQ.getType()) {

@@ -28,7 +28,7 @@ public class LoginAuthRequestHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        log.info("receive a msg:{}", msg);
+        log.debug("receive a msg:{}", msg);
         if (msg instanceof BaseMessage) {
             BaseMessage baseMessage = (BaseMessage) msg;
             if (baseMessage.getType() == MessageType.LOGIN_RES.getType()) {

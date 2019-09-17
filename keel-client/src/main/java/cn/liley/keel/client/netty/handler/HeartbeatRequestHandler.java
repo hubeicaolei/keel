@@ -26,7 +26,7 @@ public class HeartbeatRequestHandler extends ChannelInboundHandlerAdapter {
                                 new HeartbeatTask(ctx), 0, 5000, TimeUnit.MILLISECONDS);
                 log.info("start to send a heartbeat every 5 seconds");
             } else if (keelMessage.getType() == MessageType.HEARTBEAT_RES.getType()) {
-                log.info("receive a heatbeat response");
+                log.debug("receive a heatbeat response");
             } else {
                 ctx.fireChannelRead(msg);
             }
@@ -43,7 +43,7 @@ public class HeartbeatRequestHandler extends ChannelInboundHandlerAdapter {
 
         @Override
         public void run() {
-            log.info("send a heartbeat!");
+            log.debug("send a heartbeat!");
             HeartbeatRequest heartbeatRequest = new HeartbeatRequest();
             ctx.writeAndFlush(heartbeatRequest);
         }
