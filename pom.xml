@@ -21,7 +21,7 @@
     <description>服务治理</description>
 
     <properties>
-        <netty.version>4.1.29.Final</netty.version>
+        <netty.version>4.1.42.Final</netty.version>
         <lombok.version>1.16.20</lombok.version>
         <msgpack.version>0.6.12</msgpack.version>
     </properties>
